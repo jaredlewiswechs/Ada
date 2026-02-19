@@ -1,0 +1,204 @@
+Cool — if the goal is **“users love it” + “Apple notices”**, you want Ada to feel like it was *born inside iOS*: **on-device intelligence, deep App Intents integration everywhere, privacy-forward, and shockingly useful in 30 seconds.** Apple has explicitly positioned this direction with the **Foundation Models framework** (on-device Apple Intelligence model) and its “integrate everywhere” approach via **App Intents**. ([Apple Developer][1])
+
+Below is a build plan you can hand straight to Claude Code.
+
+---
+
+## The “Apple attention” thesis
+
+Apple will care if Ada:
+
+1. **Uses Foundation Models correctly** (task model, not a generic chatbot) ([Apple Machine Learning Research][2])
+2. **Feels system-native**: Spotlight + Shortcuts + widgets + Siri phrases + Visual Intelligence entry points (via App Intents) ([Apple Developer][3])
+3. **Is privacy-credible**: on-device by default; clear consent; minimal collection; App Store privacy details aligned ([Apple Developer][4])
+4. **Delivers a “wow loop”**: user says something messy → Ada produces a clean plan + executes + shows “what changed” (audit trail)
+
+---
+
+## The killer product: “Ada: Personal Ops + Capture”
+
+### What users will love (and use daily)
+
+**Ada is the fastest way to turn life into structured action**, with two headline features:
+
+### 1) “One Message to Organized”
+
+User drops a blob like:
+
+> “Dentist next Thursday afternoon, remind me the night before, and schedule a follow-up in 6 months. Also add a packing list for Dallas.”
+
+Ada returns:
+
+* created calendar event + reminder
+* a checklist in Ada
+* optional “shareable” summary
+
+**All execution uses first-party frameworks** (Calendar/Reminders) and is exposed via App Intents so it runs from Shortcuts/Spotlight/Siri. ([Apple Developer][3])
+
+### 2) “Scan → Structure” (Capture that compiles)
+
+Point camera at:
+
+* class notes / whiteboard
+* a bill
+* a flyer
+* a schedule
+
+Ada does OCR + structure:
+
+* tasks
+* dates
+* contacts
+* action items
+* a “clean doc” output
+
+This is the kind of practical “Apple Intelligence” use Apple promotes: summarization, extraction, refinement — not trivia. ([Apple Machine Learning Research][2])
+
+---
+
+## System design (the Ada loop)
+
+### A. On-device planning (Foundation Models)
+
+Use Foundation Models framework to produce a typed object:
+
+**Plan**
+
+* `intent`: string
+* `entities`: dates, times, locations, people, amounts
+* `actions`: list of tool calls to run (calendar/reminders/checklists)
+* `confirmations`: what must be confirmed before execution
+* `risk`: “none / needs confirm / sensitive”
+
+Apple’s own research notes this model is best for tasks like summarization/extraction/refinement, not broad world knowledge. ([Apple Machine Learning Research][2])
+
+### B. Tool execution (App Intents-first)
+
+Everything “do-able” is implemented as App Intents:
+
+* `CreateEventIntent`
+* `CreateReminderIntent`
+* `CreateChecklistIntent`
+* `ScanAndExtractIntent`
+* `DailyBriefIntent`
+* `FocusModePrepIntent` (if you integrate Focus data later)
+
+App Intents are the official integration surface for **Shortcuts, Spotlight, widgets, and system experiences**. ([Apple Developer][3])
+
+### C. Verification + receipts (Apple will like this)
+
+After executing each action:
+
+* read back the created/updated object
+* show a “receipt”:
+
+  * ✅ event created (title/time/location)
+  * ✅ reminder created (due date)
+  * ✅ list created (items)
+* keep a local audit log (“Ada Ledger”) that the user can export
+
+This makes Ada feel *trustworthy*.
+
+---
+
+## The “everywhere” entry points (non-negotiable)
+
+If you want Apple’s attention, Ada must show up across iOS:
+
+1. **Spotlight**: “Create reminder with Ada”, “Scan with Ada” (App Intents + App Shortcuts) ([Apple Developer][3])
+2. **Shortcuts**: rich parameters + suggested shortcuts ([Apple Developer][3])
+3. **Widgets**: quick actions (Scan / Add / Brief)
+4. **Share Sheet**: “Send to Ada” (summarize, extract tasks/dates)
+5. **Action Button / Lock Screen** quick capture (if supported by your targets)
+
+---
+
+## Privacy posture (must be crisp)
+
+Your marketing line should basically be Apple’s line:
+
+* **On-device processing by default**
+* Clear consent for Calendar/Reminders/Photos access
+* No silent collection
+* If anything goes off-device, make it user-initiated and obvious
+
+Apple’s guidance emphasizes processing on device where possible, and App Store privacy disclosures treat on-device-only processing differently than collected data. ([Apple Developer][5])
+
+---
+
+## What to hand Claude Code (build spec checklist)
+
+### 1) App structure
+
+* SwiftUI app
+* Modules:
+
+  * `AdaCore` (types, plan schema, audit log)
+  * `AdaModels` (Foundation Models wrapper)
+  * `AdaTools` (App Intents implementations)
+  * `AdaUI` (chat + receipts + capture)
+
+### 2) Data model (local-first)
+
+* `AdaItem` (task/event/note)
+* `AdaPlan`
+* `AdaReceipt`
+* `AdaLedgerEntry` (timestamp, input hash, actions, results)
+
+### 3) App Intents (initial set)
+
+* Create Reminder
+* Create Event
+* Scan & Extract (camera → OCR → plan)
+* Daily Brief (summarize today + top tasks)
+* “Inbox to Plan” (paste text → plan)
+
+### 4) Core screens
+
+* **Chat** (input + receipts)
+* **Inbox** (captured items awaiting approval)
+* **Ledger** (what Ada changed)
+* **Automations** (saved routines as Shortcuts)
+
+### 5) “Wow” demo script (for Apple / users)
+
+* “Here’s a messy paragraph.” → Ada outputs a clean plan → executes → shows receipts → user taps “Save as Shortcut”
+
+This demo aligns perfectly with how Apple describes developer access to on-device intelligence and system-wide integrations. ([apple.com][6])
+
+---
+
+## Optional “Apple flex” features (v2)
+
+These are *exactly* the kinds of things that get featured:
+
+* **Context window discipline** (use Apple’s guidance on managing context) ([Apple Developer][7])
+* **Personal writing styles**: rewrite text in “my tone” (all on-device)
+* **Visual Intelligence hook**: “Recognize this schedule → add events” (build with the same intent architecture)
+
+---
+
+## The one decision that matters
+
+To maximize love + Apple attention:
+
+**Make Ada a “compiler for life”:**
+
+* input is messy human stuff
+* output is structured, verified actions
+* Ada never pretends it did something it didn’t
+* Ada shows receipts
+
+If you want, paste the exact line you want Ada to be known for (your slogan), and I’ll turn this into:
+
+* a full PRD,
+* an App Intents catalog (with parameter schemas),
+* and a Claude Code “build prompt” that generates the project skeleton in one go.
+
+[1]: https://developer.apple.com/documentation/FoundationModels?utm_source=chatgpt.com "Foundation Models | Apple Developer Documentation"
+[2]: https://machinelearning.apple.com/research/apple-foundation-models-2025-updates?utm_source=chatgpt.com "Updates to Apple's On-Device and Server Foundation ..."
+[3]: https://developer.apple.com/documentation/appintents?utm_source=chatgpt.com "App Intents | Apple Developer Documentation"
+[4]: https://developer.apple.com/app-store/app-privacy-details/?utm_source=chatgpt.com "App Privacy Details - App Store"
+[5]: https://developer.apple.com/design/human-interface-guidelines/privacy?utm_source=chatgpt.com "Privacy | Apple Developer Documentation"
+[6]: https://www.apple.com/newsroom/2025/09/apples-foundation-models-framework-unlocks-new-intelligent-app-experiences/?utm_source=chatgpt.com "Apple's Foundation Models framework unlocks new app ..."
+[7]: https://developer.apple.com/documentation/technotes/tn3193-managing-the-on-device-foundation-model-s-context-window?utm_source=chatgpt.com "Managing the on-device foundation model's context window"
