@@ -26,15 +26,38 @@
 		};
 		AA100002 /* AdaWidgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AA800001 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
 			path = AdaWidgets;
 			sourceTree = "<group>";
 		};
 		AA100003 /* AdaShareExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AA800002 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
 			path = AdaShareExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AA800001 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AA300002 /* AdaWidgets */;
+		};
+		AA800002 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AA300003 /* AdaShareExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXGroup section */
 		AA200001 = {
