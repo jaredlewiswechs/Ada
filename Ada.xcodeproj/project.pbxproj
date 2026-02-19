@@ -382,12 +382,16 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Ada/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Ada/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Ada;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Ada needs access to your calendar to create and manage events.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Ada uses the camera to scan documents and extract structured information.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Ada can import photos to scan and extract information.";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Ada needs access to your reminders to create and manage tasks.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,12 +417,16 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Ada/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Ada/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Ada;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Ada needs access to your calendar to create and manage events.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Ada uses the camera to scan documents and extract structured information.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Ada can import photos to scan and extract information.";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Ada needs access to your reminders to create and manage tasks.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
